@@ -1,7 +1,11 @@
+using AutoFixture;
+using AutoFixture.Kernel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ppedv.Cooky.Model;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace ppedv.Cooky.Data.EFCore.Tests
 {
@@ -19,13 +23,15 @@ namespace ppedv.Cooky.Data.EFCore.Tests
         [TestMethod]
         public void CookyEfContext_can_add_Zutat()
         {
-            var con = new CookyEfContext();
-            var zutat = new Zutat() { Name = "Z1", KCalPro100G = 333, MengenEinheit = MengenEinheit.Prise };
+            using (var con = new CookyEfContext())
+            {
+                var zutat = new Zutat() { Name = "Z1", KCalPro100G = 333, MengenEinheit = MengenEinheit.Prise };
 
-            con.Zutaten.Add(zutat);
-            int affectedRow = con.SaveChanges();
+                con.Zutaten.Add(zutat);
+                int affectedRow = con.SaveChanges();
 
-            Assert.AreEqual(1, affectedRow);
+                Assert.AreEqual(1, affectedRow);
+            }
         }
 
         [TestMethod]
@@ -40,7 +46,7 @@ namespace ppedv.Cooky.Data.EFCore.Tests
             {
                 con.Zutaten.Add(zutat);
                 con.SaveChanges();
-            }
+            } //con.Dispose(); 
 
             using (var con = new CookyEfContext())
             {
@@ -72,6 +78,44 @@ namespace ppedv.Cooky.Data.EFCore.Tests
                 Assert.IsNull(loaded);
             }
 
+        }
+
+        [TestMethod]
+        public void CookyEfContext_can_CR_Zutat_AutoFix()
+        {
+            var fix = new Fixture();
+
+            fix.Behaviors.Add(new OmitOnRecursionBehavior());
+
+            fix.Customizations.Add(new TypeRelay(typeof(ppedv.Cooky.Model.Schritt), typeof(ZutatHinzugeben)));
+            fix.Customizations.Add(new PropertyNameOmitter("Id"));
+
+            var zutat = fix.Build<Zutat>().Create();
+
+            using (var con = new CookyEfContext())
+            {
+                con.Zutaten.Add(zutat);
+                con.SaveChanges();
+            }
+        }
+    }
+
+    internal class PropertyNameOmitter : ISpecimenBuilder
+    {
+        private readonly IEnumerable<string> names;
+
+        internal PropertyNameOmitter(params string[] names)
+        {
+            this.names = names;
+        }
+
+        public object Create(object request, ISpecimenContext context)
+        {
+            var propInfo = request as PropertyInfo;
+            if (propInfo != null && names.Contains(propInfo.Name))
+                return new OmitSpecimen();
+
+            return new NoSpecimen();
         }
     }
 }

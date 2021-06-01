@@ -21,7 +21,7 @@ namespace ppedv.Cooky.Data.EFCore
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Cooky;Trusted_Connection=true");
 
             optionsBuilder.UseLazyLoadingProxies();
-
+            
 
             base.OnConfiguring(optionsBuilder);
         }
