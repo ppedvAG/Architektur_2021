@@ -1,5 +1,6 @@
 using AutoFixture;
 using AutoFixture.Kernel;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ppedv.Cooky.Model;
 using System;
@@ -81,7 +82,7 @@ namespace ppedv.Cooky.Data.EFCore.Tests
         }
 
         [TestMethod]
-        public void CookyEfContext_can_CR_Zutat_AutoFix()
+        public void CookyEfContext_can_CR_Zutat_AutoFix_and_FluentAssertions()
         {
             var fix = new Fixture();
 
@@ -97,6 +98,13 @@ namespace ppedv.Cooky.Data.EFCore.Tests
                 con.Zutaten.Add(zutat);
                 con.SaveChanges();
             }
+
+            using (var con = new CookyEfContext())
+            {
+                var loaded = con.Zutaten.FirstOrDefault(x => x.Id == zutat.Id);
+                loaded.Should().BeEquivalentTo(zutat, o => o.IgnoringCyclicReferences());
+            }
+
         }
     }
 
