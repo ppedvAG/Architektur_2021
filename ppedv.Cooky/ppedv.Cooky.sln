@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Cooky.Model", "ppedv.Cooky.Model\ppedv.Cooky.Model.csproj", "{7A9B67C4-3A4B-42CC-8CF2-9410162DE7FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Cooky.Data.EFCore", "ppedv.Cooky.Data.EFCore\ppedv.Cooky.Data.EFCore.csproj", "{84CA4226-781C-42B7-98FF-43D73087DBF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Cooky.Data.EFCore.Tests", "ppedv.Cooky.Data.EFCore.Tests\ppedv.Cooky.Data.EFCore.Tests.csproj", "{A85C0069-BC01-4743-8B0C-4A913A93F671}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7A9B67C4-3A4B-42CC-8CF2-9410162DE7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A9B67C4-3A4B-42CC-8CF2-9410162DE7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A9B67C4-3A4B-42CC-8CF2-9410162DE7FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84CA4226-781C-42B7-98FF-43D73087DBF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84CA4226-781C-42B7-98FF-43D73087DBF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84CA4226-781C-42B7-98FF-43D73087DBF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84CA4226-781C-42B7-98FF-43D73087DBF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A85C0069-BC01-4743-8B0C-4A913A93F671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A85C0069-BC01-4743-8B0C-4A913A93F671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A85C0069-BC01-4743-8B0C-4A913A93F671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A85C0069-BC01-4743-8B0C-4A913A93F671}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
