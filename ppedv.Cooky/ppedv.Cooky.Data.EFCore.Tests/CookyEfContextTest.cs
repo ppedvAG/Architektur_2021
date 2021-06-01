@@ -66,6 +66,7 @@ namespace ppedv.Cooky.Data.EFCore.Tests
                 //check UPDATE
                 var loaded = con.Zutaten.FirstOrDefault(x => x.Id == zutat.Id);
                 Assert.AreEqual(zName2, loaded.Name);
+                zName2.Should().Be(loaded.Name);
 
                 //DELETE
                 con.Zutaten.Remove(loaded);
@@ -76,7 +77,8 @@ namespace ppedv.Cooky.Data.EFCore.Tests
             {
                 //check DELETE
                 var loaded = con.Zutaten.FirstOrDefault(x => x.Id == zutat.Id);
-                Assert.IsNull(loaded);
+                //Assert.IsNull(loaded);
+                loaded.Should().NotBeNull();
             }
 
         }

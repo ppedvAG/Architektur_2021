@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Cooky.Data.EFCore", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Cooky.Data.EFCore.Tests", "ppedv.Cooky.Data.EFCore.Tests\ppedv.Cooky.Data.EFCore.Tests.csproj", "{A85C0069-BC01-4743-8B0C-4A913A93F671}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Cooky.Logic", "ppedv.Cooky.Logic\ppedv.Cooky.Logic.csproj", "{17A33E2F-14ED-4558-A75F-AC519675213A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A85C0069-BC01-4743-8B0C-4A913A93F671}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A85C0069-BC01-4743-8B0C-4A913A93F671}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A85C0069-BC01-4743-8B0C-4A913A93F671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17A33E2F-14ED-4558-A75F-AC519675213A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17A33E2F-14ED-4558-A75F-AC519675213A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17A33E2F-14ED-4558-A75F-AC519675213A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17A33E2F-14ED-4558-A75F-AC519675213A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
