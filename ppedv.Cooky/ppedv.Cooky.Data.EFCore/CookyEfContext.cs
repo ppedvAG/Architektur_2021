@@ -40,5 +40,25 @@ namespace ppedv.Cooky.Data.EFCore
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public override int SaveChanges()
+        {
+            foreach (var entry in this.ChangeTracker.Entries())
+            {
+                if (entry.Entity is Entity e)
+                {
+                    if (entry.State == EntityState.Added)
+                    {
+                        e.Created = DateTime.Now;
+                        e.Modified = DateTime.Now;
+                    }
+                    else if (entry.State == EntityState.Modified)
+                        e.Modified = DateTime.Now;
+
+                }
+            }
+
+            return base.SaveChanges();
+        }
     }
 }
