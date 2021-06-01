@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Cooky.Model", "ppedv.Cooky.Model\ppedv.Cooky.Model.csproj", "{7A9B67C4-3A4B-42CC-8CF2-9410162DE7FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A9B67C4-3A4B-42CC-8CF2-9410162DE7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A9B67C4-3A4B-42CC-8CF2-9410162DE7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A9B67C4-3A4B-42CC-8CF2-9410162DE7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A9B67C4-3A4B-42CC-8CF2-9410162DE7FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49F4B661-692A-44DC-8F8C-EE5BD5EF5876}
+	EndGlobalSection
+EndGlobal
