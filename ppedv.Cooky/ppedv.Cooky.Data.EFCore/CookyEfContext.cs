@@ -19,11 +19,26 @@ namespace ppedv.Cooky.Data.EFCore
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Cooky;Trusted_Connection=true");
-            
-            optionsBuilder.UseLazyLoadingProxies(); 
+
+            optionsBuilder.UseLazyLoadingProxies();
 
 
             base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ZutatHinzugeben>().ToTable("ZutatHinzugeben");
+            modelBuilder.Entity<Mixen>().ToTable("Mixen");
+            modelBuilder.Entity<Erhitzen>().ToTable("Erhitzen");
+
+            modelBuilder.Entity<Rezept>().Property(x => x.Name)
+                                         .IsRequired()
+                                         .HasMaxLength(59)
+                                         .HasColumnName("Rezeptname");
+
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
