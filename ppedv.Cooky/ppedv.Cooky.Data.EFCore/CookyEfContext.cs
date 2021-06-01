@@ -50,7 +50,7 @@ namespace ppedv.Cooky.Data.EFCore
                     if (entry.State == EntityState.Added)
                     {
                         e.Created = DateTime.Now;
-                        e.Modified = DateTime.Now;
+                        e.Modified = e.Created;
                     }
                     else if (entry.State == EntityState.Modified)
                         e.Modified = DateTime.Now;
