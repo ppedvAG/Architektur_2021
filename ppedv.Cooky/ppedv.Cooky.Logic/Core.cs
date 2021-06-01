@@ -18,7 +18,7 @@ namespace ppedv.Cooky.Logic
 
         public int CountRezepteInDb()
         {
-            return Repository.GetAll<Rezept>().Count();
+            return Repository.Query<Rezept>().Count();
         }
     }
 }
