@@ -78,7 +78,7 @@ namespace ppedv.Cooky.Data.EFCore.Tests
                 //check DELETE
                 var loaded = con.Zutaten.FirstOrDefault(x => x.Id == zutat.Id);
                 //Assert.IsNull(loaded);
-                loaded.Should().NotBeNull();
+                loaded.Should().BeNull();
             }
 
         }

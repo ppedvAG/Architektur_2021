@@ -21,7 +21,7 @@ namespace ppedv.Cooky.Data.EFCore
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Cooky;Trusted_Connection=true");
 
             optionsBuilder.UseLazyLoadingProxies();
-            
+
 
             base.OnConfiguring(optionsBuilder);
         }
@@ -37,6 +37,7 @@ namespace ppedv.Cooky.Data.EFCore
                                          .HasMaxLength(59)
                                          .HasColumnName("Rezeptname");
 
+            modelBuilder.Entity<Rezept>().HasMany(x => x.Schritte).WithOne(x => x.Rezept).OnDelete(DeleteBehavior.Cascade);
 
             base.OnModelCreating(modelBuilder);
         }
