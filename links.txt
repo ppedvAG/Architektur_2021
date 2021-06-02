@@ -1,0 +1,16 @@
+thttps://referencesource.microsoft.com
+
+https://dotnet.microsoft.com/platform/suppo
+rt/policy
+
+https://docs.microsoft.com/en-
+us/dotnet/core/porting/upgrade-assistant-overview
+
+https://github.com/dotnet/wcf
+
+https://github.com/public-apis/public-apis
+https://app.quicktype.io
+
+https://prismlibrary.com/docs/index.html
+https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/patterns-wpf-apps-with-the-model-view-viewmodel-design-pattern
+https://github.com/Fody/Fody
