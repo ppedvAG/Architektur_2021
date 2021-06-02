@@ -13,7 +13,10 @@ namespace ppedv.Cooky.UI.DevConsole
 
             var core = new Core();
             Console.WriteLine($"Rezepte in DB: {core.CountRezepteInDb()}");
-            foreach (var rez in core.UnitOfWork.RezeptRepository.Query().Where(x => x.Name.StartsWith("N") && x.Created.Year > 1000).ToList())
+            //foreach (var rez in core.UnitOfWork.RezeptRepository.Query().Where(x => x.Name.StartsWith("N") && x.Created.Year > 1000).ToList())
+
+            //foreach (var rez in core.UnitOfWork.RezeptRepository.GetAllRezepteWithZuaten()) //eager loading
+            foreach (var rez in core.UnitOfWork.RezeptRepository.Query().ToList()) //lazy loading
             {
                 Console.WriteLine($"{rez.Name}");
 
@@ -22,10 +25,12 @@ namespace ppedv.Cooky.UI.DevConsole
                     Console.WriteLine($"\t{sch.Position} {sch.Schritt.Beschreibung}");
                     if (sch.Schritt is ZutatHinzugeben zh)
                         zh.Zutat.KCalPro100G += 1;
+
                 }
             }
             core.UnitOfWork.SaveAll();
 
+         
             Console.WriteLine("Ende");
             Console.ReadLine();
         }

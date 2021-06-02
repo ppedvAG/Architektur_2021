@@ -40,7 +40,7 @@ namespace ppedv.Cooky.Logic.Tests
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Rezept> GetRezeptByStoredProc()
+        public IEnumerable<Rezept> GetAllRezepteWithZuaten()
         {
             throw new NotImplementedException();
         }

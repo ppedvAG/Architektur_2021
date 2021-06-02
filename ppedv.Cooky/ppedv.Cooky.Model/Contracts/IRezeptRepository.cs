@@ -4,6 +4,6 @@ namespace ppedv.Cooky.Model.Contracts
 {
     public interface IRezeptRepository: IBaseRepository<Rezept>
     {
-        IEnumerable<Rezept> GetRezeptByStoredProc();
+        IEnumerable<Rezept> GetAllRezepteWithZuaten();
     }
 }

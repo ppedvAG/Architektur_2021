@@ -1,6 +1,9 @@
-﻿using ppedv.Cooky.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using ppedv.Cooky.Model;
 using ppedv.Cooky.Model.Contracts;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace ppedv.Cooky.Data.EFCore
 {
@@ -9,11 +12,12 @@ namespace ppedv.Cooky.Data.EFCore
         public EfRezeptRepository(CookyEfContext context) : base(context)
         { }
 
-        public IEnumerable<Rezept> GetRezeptByStoredProc()
+        public IEnumerable<Rezept> GetAllRezepteWithZuaten()
         {
-            context.Database.BeginTransaction();
-            //todo db operationen
-            return null;
+            var query = context.Rezepte.Include(x => x.Schritte).ThenInclude(x => (x.Schritt as ZutatHinzugeben).Zutat);
+            Debug.WriteLine(query.ToQueryString());
+
+            return query;
         }
 
         public override void Add(Rezept entity)
