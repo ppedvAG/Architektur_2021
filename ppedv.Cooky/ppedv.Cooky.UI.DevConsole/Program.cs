@@ -12,7 +12,7 @@ namespace ppedv.Cooky.UI.DevConsole
             Console.WriteLine("*** Cooky v0.1 ***");
 
             var core = new Core();
-            Console.WriteLine($"Rezepte in DB: {core.CountRezepteInDb()}");
+            Console.WriteLine($"Rezepte in DB: {core.RezeptService.CountRezepteInDb()}");
             //foreach (var rez in core.UnitOfWork.RezeptRepository.Query().Where(x => x.Name.StartsWith("N") && x.Created.Year > 1000).ToList())
 
             //foreach (var rez in core.UnitOfWork.RezeptRepository.GetAllRezepteWithZuaten()) //eager loading

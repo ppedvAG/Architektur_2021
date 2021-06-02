@@ -12,10 +12,10 @@ namespace ppedv.Cooky.Logic.Tests
         [TestMethod]
         public void Core_CalcKCalOfRezept_No_zutaten()
         {
-            var core = new Core(null);
+            var rs = new RezeptService(null);
             var rez = new Rezept();
 
-            var result = core.CalcKCalOfRezept(rez);
+            var result = rs.CalcKCalOfRezept(rez);
 
             Assert.AreEqual(0, result);
         }
@@ -23,7 +23,8 @@ namespace ppedv.Cooky.Logic.Tests
         [TestMethod]
         public void Core_CalcKCalOfRezept_one_rezept_with_two_zutaten()
         {
-            var core = new Core(null);
+            var rs = new RezeptService(null);
+
             var z1 = new Zutat() { KCalPro100G = 12 };
             var z2 = new Zutat() { KCalPro100G = 14 };
             var sz1 = new ZutatHinzugeben() { Zutat = z1 };
@@ -33,7 +34,7 @@ namespace ppedv.Cooky.Logic.Tests
             rez.Schritte.Add(new Schritte() { Schritt = sz1 });
             rez.Schritte.Add(new Schritte() { Schritt = sz2 });
 
-            var result = core.CalcKCalOfRezept(rez);
+            var result = rs.CalcKCalOfRezept(rez);
 
             Assert.AreEqual(26, result);
         }
@@ -41,9 +42,9 @@ namespace ppedv.Cooky.Logic.Tests
         [TestMethod]
         public void Core_GetRezeptWithMostKCal_two_rezepte_results_r2()
         {
-            var core = new Core(new TestUnitOfWork());
+            var rs = new RezeptService(new TestUnitOfWork());
 
-            var result = core.GetRezeptWithMostKCal();
+            var result = rs.GetRezeptWithMostKCal();
 
             Assert.AreEqual("R2", result.Name);
         }
@@ -57,7 +58,7 @@ namespace ppedv.Cooky.Logic.Tests
 
             var core = new Core(mockUow.Object);
 
-            var result = core.GetRezeptWithMostKCal();
+            var result = core.RezeptService.GetRezeptWithMostKCal();
 
             Assert.IsNull(result);
         }
@@ -89,7 +90,7 @@ namespace ppedv.Cooky.Logic.Tests
             mockUow.Setup(x => x.RezeptRepository).Returns(mockRepo.Object);
             var core = new Core(mockUow.Object);
 
-            var result = core.GetRezeptWithMostKCal();
+            var result = core.RezeptService.GetRezeptWithMostKCal();
 
             Assert.AreEqual("R2", result.Name);
         }

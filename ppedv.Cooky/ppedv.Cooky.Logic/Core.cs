@@ -8,6 +8,8 @@ namespace ppedv.Cooky.Logic
     {
         public IUnitOfWork UnitOfWork { get; private set; }
 
+        public RezeptService RezeptService { get => new RezeptService(UnitOfWork); }
+
         public Core(IUnitOfWork uow)
         {
             UnitOfWork = uow;
@@ -16,19 +18,6 @@ namespace ppedv.Cooky.Logic
         public Core() : this(new Data.EFCore.EfUnitOfWork())
         { }
 
-        public int CountRezepteInDb()
-        {
-            return UnitOfWork.RezeptRepository.Query().Count();
-        }
 
-        public double CalcKCalOfRezept(Rezept rezept)
-        {
-            return rezept.Schritte.Where(x => x.Schritt is ZutatHinzugeben).Sum(x => ((ZutatHinzugeben)x.Schritt).Zutat.KCalPro100G);
-        }
-
-        public Rezept GetRezeptWithMostKCal()
-        {
-            return UnitOfWork.RezeptRepository.Query().OrderByDescending(x => CalcKCalOfRezept(x)).FirstOrDefault();
-        }
     }
 }
