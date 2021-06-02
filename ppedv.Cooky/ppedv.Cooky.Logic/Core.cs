@@ -20,5 +20,15 @@ namespace ppedv.Cooky.Logic
         {
             return Repository.Query<Rezept>().Count();
         }
+
+        public double CalcKCalOfRezept(Rezept rezept)
+        {
+            return rezept.Schritte.Where(x => x.Schritt is ZutatHinzugeben).Sum(x => ((ZutatHinzugeben)x.Schritt).Zutat.KCalPro100G);
+        }
+
+        public Rezept GetRezptWithMostKCal()
+        {
+            return Repository.Query<Rezept>().OrderBy(x => CalcKCalOfRezept(x)).FirstOrDefault();
+        }
     }
 }
