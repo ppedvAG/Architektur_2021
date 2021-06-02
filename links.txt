@@ -1,10 +1,8 @@
 thttps://referencesource.microsoft.com
 
-https://dotnet.microsoft.com/platform/suppo
-rt/policy
+https://dotnet.microsoft.com/platform/support/policy
 
-https://docs.microsoft.com/en-
-us/dotnet/core/porting/upgrade-assistant-overview
+https://docs.microsoft.com/en-us/dotnet/core/porting/upgrade-assistant-overview
 
 https://github.com/dotnet/wcf
 
