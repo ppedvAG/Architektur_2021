@@ -26,9 +26,9 @@ namespace ppedv.Cooky.Logic
             return rezept.Schritte.Where(x => x.Schritt is ZutatHinzugeben).Sum(x => ((ZutatHinzugeben)x.Schritt).Zutat.KCalPro100G);
         }
 
-        public Rezept GetRezptWithMostKCal()
+        public Rezept GetRezeptWithMostKCal()
         {
-            return Repository.Query<Rezept>().OrderBy(x => CalcKCalOfRezept(x)).FirstOrDefault();
+            return Repository.Query<Rezept>().OrderByDescending(x => CalcKCalOfRezept(x)).FirstOrDefault();
         }
     }
 }
