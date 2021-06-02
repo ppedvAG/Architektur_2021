@@ -6,19 +6,19 @@ namespace ppedv.Cooky.Logic
 {
     public class Core
     {
-        public IRepository Repository { get; private set; }
+        public IUnitOfWork UnitOfWork { get; private set; }
 
-        public Core(IRepository repository)
+        public Core(IUnitOfWork uow)
         {
-            Repository = repository;
+            UnitOfWork = uow;
         }
 
-        public Core() : this(new Data.EFCore.EfCoreRepository())
+        public Core() : this(new Data.EFCore.EfUnitOfWork())
         { }
 
         public int CountRezepteInDb()
         {
-            return Repository.Query<Rezept>().Count();
+            return UnitOfWork.RezeptRepository.Query().Count();
         }
 
         public double CalcKCalOfRezept(Rezept rezept)
@@ -28,7 +28,7 @@ namespace ppedv.Cooky.Logic
 
         public Rezept GetRezeptWithMostKCal()
         {
-            return Repository.Query<Rezept>().OrderByDescending(x => CalcKCalOfRezept(x)).FirstOrDefault();
+            return UnitOfWork.RezeptRepository.Query().OrderByDescending(x => CalcKCalOfRezept(x)).FirstOrDefault();
         }
     }
 }

@@ -41,7 +41,7 @@ namespace ppedv.Cooky.Logic.Tests
         [TestMethod]
         public void Core_GetRezeptWithMostKCal_two_rezepte_results_r2()
         {
-            var core = new Core(new TestRepository());
+            var core = new Core(new TestUnitOfWork());
 
             var result = core.GetRezeptWithMostKCal();
 
@@ -51,9 +51,11 @@ namespace ppedv.Cooky.Logic.Tests
         [TestMethod]
         public void Core_GetRezeptWithMostKCal_no_rezepte()
         {
-            var mock = new Mock<IRepository>();
+            var mockRepo = new Mock<IRezeptRepository>();
+            var mockUow = new Mock<IUnitOfWork>();
+            mockUow.Setup(x => x.RezeptRepository).Returns(mockRepo.Object);
 
-            var core = new Core(mock.Object);
+            var core = new Core(mockUow.Object);
 
             var result = core.GetRezeptWithMostKCal();
 
@@ -63,8 +65,8 @@ namespace ppedv.Cooky.Logic.Tests
         [TestMethod]
         public void Core_GetRezeptWithMostKCal_two_rezepte_results_r2_moq()
         {
-            var mock = new Mock<IRepository>();
-            mock.Setup(x => x.Query<Rezept>()).Returns(() =>
+            var mockRepo = new Mock<IRezeptRepository>();
+            mockRepo.Setup(x => x.Query()).Returns(() =>
               {
                   var z1 = new Zutat() { KCalPro100G = 12 };
                   var z2 = new Zutat() { KCalPro100G = 14 };
@@ -82,7 +84,10 @@ namespace ppedv.Cooky.Logic.Tests
 
                   return new[] { rez1, rez2 }.AsQueryable<Rezept>();
               });
-            var core = new Core(mock.Object);
+
+            var mockUow = new Mock<IUnitOfWork>();
+            mockUow.Setup(x => x.RezeptRepository).Returns(mockRepo.Object);
+            var core = new Core(mockUow.Object);
 
             var result = core.GetRezeptWithMostKCal();
 
