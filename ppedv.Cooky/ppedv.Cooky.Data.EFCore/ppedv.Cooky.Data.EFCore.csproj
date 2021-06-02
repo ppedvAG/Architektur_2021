@@ -14,4 +14,10 @@
     <ProjectReference Include="..\ppedv.Cooky.Model\ppedv.Cooky.Model.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+			<_Parameter1>ppedv.Cooky.Data.EFCore.Tests</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+
 </Project>

@@ -4,7 +4,7 @@ using System;
 
 namespace ppedv.Cooky.Data.EFCore
 {
-    public class CookyEfContext : DbContext
+    internal class CookyEfContext : DbContext
     {
         public DbSet<Rezept> Rezepte { get; set; }
         public DbSet<Schritte> Schritte { get; set; }
